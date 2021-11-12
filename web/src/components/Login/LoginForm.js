@@ -1,5 +1,5 @@
 import '../../App.css';
-// import {useHistory} from "react-router-dom";
+import {useHistory} from "react-router-dom";
 import React from 'react';
 import Stack from '@mui/material/Stack';
 
@@ -34,7 +34,7 @@ const validationSchema = Yup.object({
 
 function Loginform() {
 
-  // let history = useHistory();
+  let history = useHistory();
   let { state, dispatch } = useContext(GlobalContext);
 
 
@@ -53,7 +53,7 @@ function Loginform() {
       .then(res => {
         console.log(res.data);
 
-      
+      history.push("/")
         alert('User Logined')
 
         if (res.data.email) {
@@ -89,7 +89,7 @@ function Loginform() {
 
 
   return (
-    <>
+    < >
       <div className="form">
         <div className="main">
         <h1>LOGIN FORM</h1>
@@ -130,6 +130,7 @@ function Loginform() {
  </form>
  </div>
       </div>
+
     </>
   );
 }

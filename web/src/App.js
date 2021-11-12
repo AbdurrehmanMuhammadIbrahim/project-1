@@ -19,7 +19,7 @@ import {
   Redirect,
 } from "react-router-dom";
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { Button, Form, Navbar, Container, Nav } from 'react-bootstrap';
+import { Button, Form, Navbar, Container, Nav,NavDropdown,FormControl,Offcanvas } from 'react-bootstrap';
 
 
 import { GlobalContext } from './context/Context';
@@ -82,38 +82,133 @@ function App() {
     
 {(state?.user?.email) ?
 
-<Navbar bg="light" expand="lg">
-  <Container>
-    <Navbar.Brand href="#home">AL HAMD</Navbar.Brand>
-    <Navbar.Toggle aria-controls="basic-navbar-nav" />
-    <Navbar.Collapse id="basic-navbar-nav">
-      <Nav className="me-auto">
-      
+
+<Navbar bg="secondary" expand={false}>
+  <Container fluid>
+    <Navbar.Brand href="#">Al Hamd</Navbar.Brand>
+    
+    <Navbar.Toggle aria-controls="offcanvasNavbar" />
+    
+    <Navbar.Offcanvas
+      id="offcanvasNavbar"
+      aria-labelledby="offcanvasNavbarLabel"
+      placement="end"
+    >
+      <Offcanvas.Header closeButton>
+        <Offcanvas.Title id="offcanvasNavbarLabel" >Al Hamd</Offcanvas.Title>
+      </Offcanvas.Header>
+      <Offcanvas.Body>
+        <Nav className="justify-content-end flex-grow-1 pe-3">
+
         <Nav.Link onClick={() => { history.push("/profile") }}>Profile</Nav.Link>
-        <Nav.Link onClick={() => { history.push("/") }}>Dashboard</Nav.Link>
-      </Nav>
-      <Form className="d-flex">
-        <Button variant="outline-primary" onClick={logout}>Logout</Button>
-      </Form>
-    </Navbar.Collapse>
+       <Nav.Link onClick={() => { history.push("/") }}>Dashboard</Nav.Link>
+       <Nav.Link variant="outline-primary" onClick={logout}>Logout</Nav.Link><br/>
+          {/* <Nav.Link href="#action1">Home</Nav.Link>
+          <Nav.Link href="#action2">Link</Nav.Link> */}
+          <NavDropdown title="Don't click" id="offcanvasNavbarDropdown">
+            <NavDropdown.Item href="#action3">Don't click</NavDropdown.Item>
+            <NavDropdown.Item href="#action4">Another action</NavDropdown.Item>
+            <NavDropdown.Divider />
+            <NavDropdown.Item href="#action5">
+              Something else here
+            </NavDropdown.Item>
+          </NavDropdown>
+        </Nav>
+        <Form className="d-flex">
+          <FormControl
+            type="search"
+            placeholder="Samajh nhi aaeii"
+            className="me-2"
+            aria-label="Search"
+          />
+          <Button variant="outline-success">Search</Button>
+        </Form>
+      </Offcanvas.Body>
+    </Navbar.Offcanvas>
   </Container>
 </Navbar>
+
+
+
+// <Navbar bg="light" expand="lg">
+//   <Container>
+//     <Navbar.Brand href="#home">AL HAMD</Navbar.Brand>
+//     <Navbar.Toggle aria-controls="basic-navbar-nav" />
+//     <Navbar.Collapse id="basic-navbar-nav">
+//       <Nav className="me-auto">
+      
+//         <Nav.Link onClick={() => { history.push("/profile") }}>Profile</Nav.Link>
+//         <Nav.Link onClick={() => { history.push("/") }}>Dashboard</Nav.Link>
+//       </Nav>
+//       <Form className="d-flex">
+//         <Button variant="outline-primary" onClick={logout}>Logout</Button>
+//       </Form>
+//     </Navbar.Collapse>
+//   </Container>
+// </Navbar>
 :
 
-      <Navbar bg="light" expand="lg">
-        <Container>
-          <Navbar.Brand href="#home">AL HAMD</Navbar.Brand>
-          <Navbar.Toggle aria-controls="basic-navbar-nav" />
-          <Navbar.Collapse id="basic-navbar-nav">
-            <Nav className="me-auto">
-              <Nav.Link onClick={() => { history.push("/") }}>Dashboard</Nav.Link>
-              <Nav.Link onClick={() => { history.push("/login") }}>Login</Nav.Link>
-              <Nav.Link onClick={() => { history.push("/") }}>Signup</Nav.Link>
 
-            </Nav>
-          </Navbar.Collapse>
-        </Container>
-      </Navbar>
+<Navbar bg="light" expand={false}>
+  <Container fluid>
+    <Navbar.Brand href="#">Al Hamd</Navbar.Brand>
+    <Navbar.Toggle aria-controls="offcanvasNavbar" />
+    <Navbar.Offcanvas
+      id="offcanvasNavbar"
+      aria-labelledby="offcanvasNavbarLabel"
+      placement="end"
+    >
+      <Offcanvas.Header closeButton>
+        <Offcanvas.Title id="offcanvasNavbarLabel"  >Al Hamd</Offcanvas.Title>
+      </Offcanvas.Header >
+      <Offcanvas.Body  >
+        <Nav className="justify-content-end flex-grow-1 pe-3"> 
+        <Nav.Link onClick={() => { history.push("/login") }}>Login</Nav.Link>
+            <Nav.Link onClick={() => { history.push("/") }}>Signup</Nav.Link>
+            <Nav.Link onClick={() => { history.push("/") }}>Dashboard</Nav.Link><br/>
+
+          <NavDropdown title="Don't click" id="offcanvasNavbarDropdown">
+            <NavDropdown.Item href="#action3">Don't click</NavDropdown.Item>
+            <NavDropdown.Item href="#action4">Another action</NavDropdown.Item>
+            <NavDropdown.Divider />
+            <NavDropdown.Item href="#action5">
+              Something else here
+            </NavDropdown.Item>
+          </NavDropdown>
+        </Nav>
+        <Form className="d-flex">
+          <FormControl
+            type="search"
+            placeholder="Samajh nhi aaeii"
+            className="me-2"
+            aria-label="Search"
+          />
+          <Button variant="outline-success">Search</Button>
+        </Form>
+      </Offcanvas.Body>
+    </Navbar.Offcanvas>
+  </Container>
+</Navbar>
+
+
+
+
+
+
+      // <Navbar bg="light" expand="lg">
+      //   <Container>
+      //     <Navbar.Brand href="#home">AL HAMD</Navbar.Brand>
+      //     <Navbar.Toggle aria-controls="basic-navbar-nav" />
+      //     <Navbar.Collapse id="basic-navbar-nav">
+      //       <Nav className="me-auto">
+      //         <Nav.Link onClick={() => { history.push("/") }}>Dashboard</Nav.Link>
+      //         <Nav.Link onClick={() => { history.push("/login") }}>Login</Nav.Link>
+      //         <Nav.Link onClick={() => { history.push("/") }}>Signup</Nav.Link>
+
+      //       </Nav>
+      //     </Navbar.Collapse>
+      //   </Container>
+      // </Navbar>
 
 }
       {(state.user === undefined) ?
